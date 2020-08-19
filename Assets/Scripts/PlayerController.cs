@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour {
 		characterController = GetComponent<CharacterController> ();
 		playerAttack = GetComponent<AttackMechanics> ();
 		playerInventory = GetComponent<InventoryController> ();
+
 	}
 
 	void Update ()
@@ -75,4 +76,12 @@ public class PlayerController : MonoBehaviour {
 		// add the correction +90 , why is that ?
 		transform.eulerAngles = Vector3.up * Mathf.MoveTowardsAngle (transform.eulerAngles.y, targetRotation.eulerAngles.y + 90, roationSpeed * Time.deltaTime);
 	}
+
+	private void OnTriggerEnter (Collider other)
+	{
+		if (other.gameObject.tag == "Brick" && playerInventory.CanPickUpMoreBricks ()) {
+			playerInventory.AddBrick (other.gameObject);
+		}
+	}
+
 }

@@ -1,11 +1,11 @@
 ﻿<Properties StartupConfiguration="{00B8A00C-CF68-39EA-839B-B0CDAF166D1E}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UIController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/AttackMechanics.cs">
     <Files>
-      <File FileName="Assets/Scripts/PlayerController.cs" Line="44" Column="4" />
+      <File FileName="Assets/Scripts/PlayerController.cs" Line="84" Column="4" />
       <File FileName="Assets/Scripts/LevelGenerator/LevelGenerator.cs" />
-      <File FileName="Assets/Scripts/AttackMechanics.cs" Line="8" Column="32" />
-      <File FileName="Assets/Scripts/InventoryController.cs" Line="7" Column="16" />
-      <File FileName="Assets/Scripts/UIController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/AttackMechanics.cs" Line="11" Column="33" />
+      <File FileName="Assets/Scripts/InventoryController.cs" Line="61" Column="42" />
+      <File FileName="Assets/Scripts/UIController.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,7 +14,7 @@
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
                 <Node name="LevelGenerator" expanded="True" />
-                <Node name="UIController.cs" selected="True" />
+                <Node name="AttackMechanics.cs" selected="True" />
               </Node>
             </Node>
           </Node>
@@ -24,7 +24,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="8da365e5-0cd6-4234-a278-1494c6cfac7a" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="38f66da7-fee8-4de9-8838-ee9490c5c256" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

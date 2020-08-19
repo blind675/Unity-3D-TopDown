@@ -5,7 +5,7 @@ using UnityEngine;
 public class AttackMechanics : MonoBehaviour {
 
 	// TODO: calculate this from player stats
-	private float throwThrust = 40.0f;
+	private float throwThrust = 12.0f;
 	private float throwDeviation = 0.25f;
 
 	public Transform spawnLocation;

@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 49284060977313138}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.5640003, y: 0, z: -0}
+  m_LocalPosition: {x: -1.1, y: 0, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2882288835981354167}
@@ -149,8 +149,9 @@ GameObject:
   - component: {fileID: 2882288834576269298}
   - component: {fileID: 2882288834576269300}
   - component: {fileID: 2882288834576269299}
-  - component: {fileID: 4720595888104816473}
+  - component: {fileID: 7342766823601947580}
   - component: {fileID: 4456091439570022766}
+  - component: {fileID: 3550708635475835469}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -188,8 +189,8 @@ CharacterController:
   serializedVersion: 2
   m_Height: 0.8
   m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_SlopeLimit: 0
+  m_StepOffset: 0
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
@@ -207,7 +208,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roationSpeed: 540
   movementSpeed: 5
---- !u!114 &4720595888104816473
+--- !u!114 &7342766823601947580
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -233,13 +234,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d5c2495fcdc940398d2e62b1bb7b2a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bricksCount: 5
   bricks:
   - {fileID: 8371920270057313825}
   - {fileID: 6289224102709567826}
   - {fileID: 3519989244722914265}
   - {fileID: 5612444335650147108}
   - {fileID: 4609101024829068072}
+--- !u!65 &3550708635475835469
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2882288834576269297}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.81300646, y: 1, z: 0.7586874}
+  m_Center: {x: 0, y: 0, z: -0.0016679019}
 --- !u!1 &2882288835778774078
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,7 +264,6 @@ GameObject:
   - component: {fileID: 2882288835778774079}
   - component: {fileID: 2882288835778774066}
   - component: {fileID: 2882288835778774065}
-  - component: {fileID: 2882288835778774064}
   m_Layer: 0
   m_Name: PlayerModel
   m_TagString: Untagged
@@ -322,19 +334,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2882288835778774064
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2882288835778774078}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2882288835981354166
 GameObject:
   m_ObjectHideFlags: 0

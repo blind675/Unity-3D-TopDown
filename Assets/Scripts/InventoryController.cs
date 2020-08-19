@@ -34,8 +34,8 @@ public class InventoryController : MonoBehaviour {
 
 	private void ActivateTheNextBrickInIventory ()
 	{
-		bricksCount++;
 		bricks [bricksCount].SetActive (true);
+		bricksCount++;
 	}
 
 	private void DestroyTheBrickFromTheGround (GameObject brickToAdd)
