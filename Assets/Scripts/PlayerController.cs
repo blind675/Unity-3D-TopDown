@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour {
 	public float movementSpeed = 5f;
 
 	//public Joystick joystick;
+	public PlayerData playerData;
 
 	private Vector3 movement;
 	private Vector3 mousePosition;
@@ -17,12 +18,14 @@ public class PlayerController : MonoBehaviour {
 	private AttackMechanics playerAttack;
 	private InventoryController playerInventory;
 
-	private void Start ()
+	private void Awake ()
 	{
 		characterController = GetComponent<CharacterController> ();
 		playerAttack = GetComponent<AttackMechanics> ();
 		playerInventory = GetComponent<InventoryController> ();
 
+		// TODO: this will change 
+		playerInventory.bricksCount = playerData.bricksInInventory;
 	}
 
 	void Update ()
@@ -39,9 +42,10 @@ public class PlayerController : MonoBehaviour {
 		Move ();
 
 		// attacking
-		if (Input.GetButtonDown ("Fire1") && playerInventory.CanUseBrick ()) {
+		if (Input.GetButtonDown ("Fire1") && playerInventory.CanUseBrick) {
 			playerAttack.Throw ();
 			playerInventory.UseBrick ();
+			playerData.bricksInInventory = playerInventory.bricksCount;
 		}
 
 	}
@@ -79,8 +83,9 @@ public class PlayerController : MonoBehaviour {
 
 	private void OnTriggerEnter (Collider other)
 	{
-		if (other.gameObject.tag == "Brick" && playerInventory.CanPickUpMoreBricks ()) {
+		if (other.gameObject.tag == "Brick" && playerInventory.CanPickUpMoreBricks) {
 			playerInventory.AddBrick (other.gameObject);
+			playerData.bricksInInventory = playerInventory.bricksCount;
 		}
 	}
 

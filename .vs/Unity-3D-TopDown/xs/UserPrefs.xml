@@ -1,11 +1,12 @@
 ﻿<Properties StartupConfiguration="{00B8A00C-CF68-39EA-839B-B0CDAF166D1E}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/AttackMechanics.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/EnemyController.cs">
     <Files>
-      <File FileName="Assets/Scripts/PlayerController.cs" Line="84" Column="4" />
-      <File FileName="Assets/Scripts/LevelGenerator/LevelGenerator.cs" />
-      <File FileName="Assets/Scripts/AttackMechanics.cs" Line="11" Column="33" />
-      <File FileName="Assets/Scripts/InventoryController.cs" Line="61" Column="42" />
-      <File FileName="Assets/Scripts/UIController.cs" />
+      <File FileName="Assets/Scripts/PlayerController.cs" Line="11" Column="29" />
+      <File FileName="Assets/Scripts/HealthBarUIItem/HealthBarScript.cs" Line="7" Column="1" />
+      <File FileName="Assets/Scripts/HealthBarUIItem/HealthBarBillBoardScript.cs" Line="17" Column="58" />
+      <File FileName="Assets/Scripts/EnemyController.cs" Line="29" Column="30" />
+      <File FileName="Assets/Scripts/UIController.cs" Line="8" Column="35" />
+      <File FileName="Assets/Scripts/AttackMechanics.cs" Line="22" Column="40" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -13,8 +14,8 @@
           <Node name="Unity-3D-TopDown" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="LevelGenerator" expanded="True" />
-                <Node name="AttackMechanics.cs" selected="True" />
+                <Node name="HealthBarUIItem" expanded="True" />
+                <Node name="EnemyController.cs" selected="True" />
               </Node>
             </Node>
           </Node>
@@ -24,7 +25,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="38f66da7-fee8-4de9-8838-ee9490c5c256" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="8fce0041-ac09-44ed-939a-3d618f0ff66b" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

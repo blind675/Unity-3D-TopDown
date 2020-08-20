@@ -4,11 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour {
+
 	public Text bricksInventoryCount;
+	public PlayerData playerData;
 
 	// Update is called once per frame
 	void Update ()
 	{
-		bricksInventoryCount.text = InventoryController.bricksCount + ": Bricks";
+		bricksInventoryCount.text = playerData.bricksInInventory + ": Bricks";
 	}
 }
