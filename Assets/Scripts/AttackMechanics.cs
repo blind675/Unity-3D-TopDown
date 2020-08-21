@@ -5,7 +5,7 @@ using UnityEngine;
 public class AttackMechanics : MonoBehaviour {
 
 	// TODO: calculate this from player stats
-	private float throwThrust = 600.0f;
+	private float throwThrust = 10.0f;
 	private float throwDeviation = 0.25f;
 
 	public Transform spawnLocation;
@@ -13,21 +13,19 @@ public class AttackMechanics : MonoBehaviour {
 
 	public void Throw ()
 	{
-		//float inacuracyValue = Random.Range (-throwDeviation, throwDeviation);
-		//Vector3 inacuracyForce = new Vector3 (inacuracyValue, 0, inacuracyValue);
+		float inacuracyValue = Random.Range (-throwDeviation, throwDeviation);
+		Vector3 directionInacuracy = new Vector3 (inacuracyValue, 0, inacuracyValue);
 
-		Vector3 inacuracyForce = Vector3.zero;
-		Vector3 throwForce = (spawnLocation.forward + inacuracyForce) * throwThrust;
+		Vector3 throwDirection = (spawnLocation.forward + directionInacuracy);
+		Vector3 throwForce = throwDirection * (throwThrust - inacuracyValue * throwThrust);
 
-		// FIXME: stronger force in the right direction
-		GameObject prefab = Instantiate (prefabToSpawn, spawnLocation.position, Quaternion.LookRotation (spawnLocation.forward));
+		GameObject prefab = Instantiate (prefabToSpawn, spawnLocation.position, Quaternion.LookRotation (throwDirection));
 
 		//TODO: Add torque on all directions random amount
 		//Vector3 directionsComposit = 
 		//prefab.GetComponent<Rigidbody> ().AddTorque (prefab.transform.up * 10f);
 
-
-		prefab.GetComponent<Rigidbody> ().AddForce (throwForce, ForceMode.Force);
+		prefab.GetComponent<Rigidbody> ().AddForce (throwForce, ForceMode.Impulse);
 
 		//Ray ray = new Ray (spawnLocation.position, throwForce);
 		//RaycastHit hit;

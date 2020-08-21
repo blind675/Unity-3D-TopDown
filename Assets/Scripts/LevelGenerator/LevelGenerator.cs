@@ -11,6 +11,7 @@ public class LevelGenerator : MonoBehaviour {
 		GenerateLevel ();
 	}
 
+	// TODO: make versatile 3D and 2D
 	void GenerateLevel ()
 	{
 		for (int x = 0; x < map.width; x++) {
@@ -34,18 +35,36 @@ public class LevelGenerator : MonoBehaviour {
 
 			if (colorMapping.color.Equals (pixelColor)) {
 
-				// TODO: make versatile 3D and 2D
+				Vector3 position = GetTilePositionFromCoordonates (x, y);
 
-				// photo origin is top left
-				// map origin is center -- corect for that
-				// TODO: extaract in metod
-				Vector3 position = new Vector3 (x - map.width / 2, 0, y - map.height / 2);
-				GameObject pefab = Instantiate (colorMapping.prefab, position, Quaternion.identity, transform);
+				GameObject prefab = colorMapping.prefab;
 
-				if (colorMapping.cameraFollowPrefab) {
-					Camera.main.GetComponent<CameraController> ().player = pefab.transform;
+				if (colorMapping.setupType == ColorToPrefab.PrefabSetupType.Spawn) {
+					prefab = SpawnPrefabAtPosition (colorMapping.prefab, position);
+				} else {
+					MovePrefabToPosition (colorMapping.prefab, position);
 				}
+
+				if (colorMapping.linkedToPlayerGameObject) {
+					EnemyController enemyController = prefab.GetComponent<EnemyController> ();
+
+					if (enemyController != null) {
+						enemyController.player = GameObject.Find ("Player");
+					}
+				}
+
+				// TODO: remove this
+				//if (colorMapping.cameraFollowPrefab) {
+				//	Camera.main.GetComponent<CameraController> ().player = prefab.transform;
+				//}
 			}
 		}
 	}
+
+	// photo origin is top left, map origin is center -- corect for that
+	private Vector3 GetTilePositionFromCoordonates (int x, int y) => new Vector3 (x - map.width / 2, 0, y - map.height / 2);
+
+	private GameObject SpawnPrefabAtPosition (GameObject prefab, Vector3 position) => Instantiate (prefab, position, Quaternion.identity, transform);
+
+	private void MovePrefabToPosition (GameObject prefab, Vector3 position) => prefab.transform.position = position;
 }

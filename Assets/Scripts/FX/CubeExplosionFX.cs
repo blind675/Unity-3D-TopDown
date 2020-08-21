@@ -2,23 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplodeFX : MonoBehaviour {
+public class CubeExplosionFX : MonoBehaviour {
 
-	public float cubeSize = 0.2f;
-	public int cubesInRow = 5;
+	public float cubeSize = 0.15f;
+	public int cubesInRow = 4;
+	public float explosionForce = 15f;
+	public float explosionRadius = 2f;
+	public float explosionUpward = 0.1f;
+	public float pieceLifeTime = 0.7f;
 
-	float cubesPivotDistance;
-	Vector3 cubesPivot;
+	public Material material;
 
-	public float explosionForce = 50f;
-	public float explosionRadius = 4f;
-	public float explosionUpward = 0.4f;
+	private float cubesPivotDistance;
+
+	private Vector3 cubesPivot;
 
 	// Use this for initialization
 	void Start ()
 	{
-
-
 		//calculate pivot distance
 		cubesPivotDistance = cubeSize * cubesInRow / 2;
 		//use this value to create pivot vector)
@@ -26,15 +27,7 @@ public class ExplodeFX : MonoBehaviour {
 
 	}
 
-	private void OnTriggerEnter (Collider other)
-	{
-		if (other.gameObject.name == "Floor") {
-			explode ();
-		}
-
-	}
-
-	public void explode ()
+	public void Explode ()
 	{
 		//make object disappear
 		gameObject.SetActive (false);
@@ -43,7 +36,7 @@ public class ExplodeFX : MonoBehaviour {
 		for (int x = 0; x < cubesInRow; x++) {
 			for (int y = 0; y < cubesInRow; y++) {
 				for (int z = 0; z < cubesInRow; z++) {
-					createPiece (x, y, z);
+					CreatePiece (x, y, z);
 				}
 			}
 		}
@@ -62,11 +55,12 @@ public class ExplodeFX : MonoBehaviour {
 			}
 		}
 
+		Destroy (gameObject, pieceLifeTime + 0.5f);
+
 	}
 
-	void createPiece (int x, int y, int z)
+	void CreatePiece (int x, int y, int z)
 	{
-
 		//create piece
 		GameObject piece;
 		piece = GameObject.CreatePrimitive (PrimitiveType.Cube);
@@ -78,6 +72,13 @@ public class ExplodeFX : MonoBehaviour {
 		//add rigidbody and set mass
 		piece.AddComponent<Rigidbody> ();
 		piece.GetComponent<Rigidbody> ().mass = cubeSize;
+
+		//add custom material
+		piece.GetComponent<Renderer> ().material = material;
+
+		float lifeTime = Random.Range (pieceLifeTime - 0.5f, pieceLifeTime + 0.5f);
+
+		Destroy (piece, lifeTime);
 	}
 
 }

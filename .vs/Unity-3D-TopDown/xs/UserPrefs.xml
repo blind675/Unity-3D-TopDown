@@ -1,20 +1,20 @@
-﻿<Properties>
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/EnemyController.cs">
+﻿<Properties StartupConfiguration="{00B8A00C-CF68-39EA-839B-B0CDAF166D1E}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/LevelGenerator/LevelGenerator.cs">
     <Files>
-      <File FileName="Assets/Scripts/PlayerController.cs" Line="11" Column="29" />
-      <File FileName="Assets/Scripts/EnemyController.cs" Line="41" Column="28" />
-      <File FileName="Assets/Scripts/UIController.cs" />
-      <File FileName="Assets/Scripts/AttackMechanics.cs" />
-      <File FileName="Assets/Scripts/EnemyHitController.cs" Line="4" Column="1" />
+      <File FileName="Assets/Scripts/AttackMechanics.cs" Line="26" Column="77" />
+      <File FileName="Assets/Scripts/LevelGenerator/LevelGenerator.cs" Line="22" Column="3" />
+      <File FileName="Assets/Scripts/LevelGenerator/ColorToPrefab.cs" Line="17" Column="35" />
+      <File FileName="Assets/Scripts/EnemyController.cs" Line="5" Column="22" />
+      <File FileName="Assets/Scripts/EnemyController.cs" Line="11" Column="46" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Unity-3D-TopDown" expanded="True">
-            <Node name="Assembly-CSharp" expanded="True">
-              <Node name="Assets" expanded="True">
-                <Node name="Scripts" expanded="True">
-                  <Node name="EnemyController.cs" selected="True" />
+            <Node name="Assets" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="LevelGenerator" expanded="True">
+                  <Node name="LevelGenerator.cs" selected="True" />
                 </Node>
               </Node>
             </Node>
@@ -25,7 +25,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="3efd60ef-7743-491a-80e6-194594e934f8" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="15dda61a-0545-454b-aae8-d52f01c4d617" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

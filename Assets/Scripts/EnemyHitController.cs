@@ -4,48 +4,89 @@ using UnityEngine;
 
 public class EnemyHitController : MonoBehaviour {
 
-	public GameObject bloodSplahsFX;
-	public AudioClip [] hitAudioClips;
+	const float IMPACT_FORCE_TRESHOLD = 300f;
+	const float IMPACT_FORCE_MAX = 700f;
 
-	public float GetLifeDecreaseForCollision (Collision collision)
+	[SerializeField]
+	private float maxLife = 100;
+	[SerializeField]
+	private float enemyArmour = 1;
+
+	public HealthBarScript healthBar;
+
+	private float life;
+	private EnemyFXController enemyFXController;
+
+	private void Start ()
+	{
+		enemyFXController = GetComponent<EnemyFXController> ();
+		healthBar.SetMaxhealth (maxLife);
+		life = maxLife;
+	}
+
+	private void OnCollisionEnter (Collision collision)
+	{
+		if (collision.gameObject.tag == "Brick") {
+
+			// process collision data
+			float lifeDecrease = GetLifeDecreaseForCollision (collision);
+
+			if (lifeDecrease == 0) {
+				// weak hit
+				return;
+			}
+
+			UpdateLifeValueWithDecrease (lifeDecrease);
+
+			if (DidEnemyDie ()) {
+				// play die sound
+				enemyFXController.PlaySoundFXForDestroy ();
+				// die FX
+				enemyFXController.ShowDestroyFX ();
+
+			} else {
+				// take care of visuals and FX
+				UpdateHealthBar (life);
+				enemyFXController.ShowFXForCollision (collision);
+				// and audio
+				enemyFXController.PlaySoundFXForCollision (collision);
+			}
+		}
+
+	}
+
+	private float GetLifeDecreaseForCollision (Collision collision)
 	{
 		float impactForce = GetImpactForceForCollision (collision);
+		impactForce = Mathf.Clamp (impactForce, IMPACT_FORCE_TRESHOLD, IMPACT_FORCE_MAX);
 
-		//FIXME: 300 and 15 are chosen randomly ...put in constants ?
-		if (impactForce > 300) {
-			return (impactForce / 15);
-		} else {
-			return 0;
-		}
-	}
+		float lifeDecreaseValue = impactForce.Map (IMPACT_FORCE_TRESHOLD, IMPACT_FORCE_MAX, 0, 40);
 
-	public void ShowFXForCollision (Collision collision)
-	{
-		// show splash
-		bloodSplahsFX.transform.position = collision.GetContact (0).point;
-		bloodSplahsFX.SetActive (true);
-
-		// hide after 0.5 seconds
-		StartCoroutine (HideFX ());
-	}
-
-	IEnumerator HideFX ()
-	{
-		yield return new WaitForSeconds (0.5f);
-
-		bloodSplahsFX.SetActive (false);
-	}
-
-	public void PlaySoundFXForCollision (Collision collision)
-	{
-		// get a random audio clip
-		int randomIndex = Random.Range (0, hitAudioClips.Length);
-		AudioClip randomHitAudioClip = hitAudioClips [randomIndex];
-
-		// play hit sound
-		AudioSource.PlayClipAtPoint (randomHitAudioClip, collision.gameObject.transform.position);
-
+		return lifeDecreaseValue;
 	}
 
 	private float GetImpactForceForCollision (Collision collision) => collision.impulse.magnitude / Time.fixedDeltaTime;
+
+	private void UpdateLifeValueWithDecrease (float lifeDecrease)
+	{
+		life -= lifeDecrease - enemyArmour;
+	}
+
+	private bool DidEnemyDie () => life < 0;
+
+	private void UpdateHealthBar (float life)
+	{
+		healthBar.SetHealth (life);
+	}
+
+}
+
+// TODO: some kind of utils class
+public static class ExtensionMethods {
+
+	public static float Map (this float value, float fromSource, float toSource, float fromTarget, float toTarget)
+	{
+		return (value - fromSource) / (toSource - fromSource) * (toTarget - fromTarget) + fromTarget;
+	}
+
 }

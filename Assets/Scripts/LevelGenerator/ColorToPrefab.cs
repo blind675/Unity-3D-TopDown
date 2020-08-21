@@ -2,7 +2,17 @@
 
 [System.Serializable]
 public class ColorToPrefab {
+	public enum PrefabSetupType {
+		Spawn,
+		Move
+	}
+
 	public Color color;
+	public PrefabSetupType setupType = PrefabSetupType.Spawn;
 	public GameObject prefab;
-	public bool cameraFollowPrefab;
+
+	public bool linkedToPlayerGameObject;
+
+	// TODO: remove this
+	//public bool cameraFollowPrefab;
 }
