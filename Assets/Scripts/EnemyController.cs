@@ -12,9 +12,11 @@ public class EnemyController : MonoBehaviour {
 	public HealthBarScript healthBar;
 
 	private float life;
+	private EnemyHitController enemyHitController;
 
 	private void Start ()
 	{
+		enemyHitController = GetComponent<EnemyHitController> ();
 		healthBar.SetMaxhealth (maxLife);
 		life = maxLife;
 	}
@@ -23,21 +25,38 @@ public class EnemyController : MonoBehaviour {
 	{
 		// TODO: extract in metod
 		if (collision.gameObject.tag == "Brick") {
-			float impactForce = GetImpactForceForCollision (collision);
 
-			if (impactForce > 300) {
-				life -= (impactForce / 15) - armour;
-				healthBar.SetHealth (life);
+			// process collision data
+			float lifeDecrease = enemyHitController.GetLifeDecreaseForCollision (collision);
 
+			if (lifeDecrease == 0) {
+				return;
 			}
 
+			// update life value
+			life -= lifeDecrease - armour;
+
+			// Did it die ?
 			if (life < 0) {
+				// TODO: play die sound
+				// TODO: die FX
 				Destroy (gameObject);
 			}
+
+			// take care of visuals and FX
+			UpdateHealthBar (life);
+			enemyHitController.ShowFXForCollision (collision);
+			// and audio
+			enemyHitController.PlaySoundFXForCollision (collision);
 		}
 
 	}
 
-	private float GetImpactForceForCollision (Collision collision) => collision.impulse.magnitude / Time.fixedDeltaTime;
+	private void UpdateHealthBar (float life)
+	{
+		healthBar.SetHealth (life);
+	}
+
+
 
 }
