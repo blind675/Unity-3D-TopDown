@@ -66,9 +66,10 @@
     <Compile Include="Assets/Scripts/LevelGenerator/LevelGenerator.cs" />
     <Compile Include="Assets/Scripts/HealthBarUIItem/HealthBarScript.cs" />
     <Compile Include="Assets/Scripts/UIController.cs" />
+    <Compile Include="Assets/Scripts/EnemyController.cs" />
     <Compile Include="Assets/Scripts/CameraController.cs" />
     <Compile Include="Assets/Scripts/HealthBarUIItem/HealthBarBillBoardScript.cs" />
-    <Compile Include="Assets/Scripts/EnemyController.cs" />
+    <Compile Include="Assets/Scripts/EnemyStats.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

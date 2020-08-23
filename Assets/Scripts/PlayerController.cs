@@ -24,8 +24,13 @@ public class PlayerController : MonoBehaviour {
 		playerAttack = GetComponent<AttackMechanics> ();
 		playerInventory = GetComponent<InventoryController> ();
 
-		// TODO: this will change 
-		playerInventory.bricksCount = playerData.bricksInInventory;
+		playerInventory.SetInitialBricksInInventory (playerData.bricksInInventory);
+
+		// TODO: get this from player data
+		playerAttack.SetThrowForce (playerData.playerForce);
+		playerAttack.SetThrowInacuracy (playerData.playerInaccuracy);
+		playerAttack.UpdateAttackConeUI ();
+
 	}
 
 	void Update ()
@@ -42,7 +47,7 @@ public class PlayerController : MonoBehaviour {
 		Move ();
 
 		// attacking
-		if (Input.GetButtonDown ("Fire1") && playerInventory.CanUseBrick) {
+		if (Input.GetButtonDown ("Fire1") && playerInventory.HasBrickAvailable ()) {
 			playerAttack.Throw ();
 			playerInventory.UseBrick ();
 			playerData.bricksInInventory = playerInventory.bricksCount;
@@ -83,7 +88,7 @@ public class PlayerController : MonoBehaviour {
 
 	private void OnTriggerEnter (Collider other)
 	{
-		if (other.gameObject.tag == "Brick" && playerInventory.CanPickUpMoreBricks) {
+		if (other.gameObject.tag == "Brick" && playerInventory.HasRoomForMoreBricks ()) {
 			playerInventory.AddBrick (other.gameObject);
 			playerData.bricksInInventory = playerInventory.bricksCount;
 		}

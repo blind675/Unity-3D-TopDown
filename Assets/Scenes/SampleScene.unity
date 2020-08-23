@@ -289,29 +289,26 @@ MonoBehaviour:
   colorMappings:
   - color: {r: 0, g: 0, b: 0, a: 1}
     setupType: 0
-    prefab: {fileID: 1656877003096532590, guid: 9d36afcc312474517a62d1f8c584f16e, type: 3}
-    linkedToPlayerGameObject: 0
-    cameraFollowPrefab: 0
+    prefabs:
+    - {fileID: 1656877003096532590, guid: 9d36afcc312474517a62d1f8c584f16e, type: 3}
   - color: {r: 0, g: 0, b: 1, a: 1}
     setupType: 1
-    prefab: {fileID: 1544550389}
-    linkedToPlayerGameObject: 0
-    cameraFollowPrefab: 1
+    prefabs:
+    - {fileID: 1544550389}
   - color: {r: 1, g: 0, b: 0, a: 1}
     setupType: 0
-    prefab: {fileID: 2882288834576269297, guid: a9322d192fee0442b887027d86468dbb, type: 3}
-    linkedToPlayerGameObject: 1
-    cameraFollowPrefab: 0
+    prefabs:
+    - {fileID: 2882288834576269297, guid: a9322d192fee0442b887027d86468dbb, type: 3}
+    - {fileID: 2882288834576269297, guid: 388a8abb91a3c4ff987ec973ba28a20a, type: 3}
+    - {fileID: 2882288834576269297, guid: a67bc17f5c02f46408513c19b55e16f3, type: 3}
   - color: {r: 0, g: 1, b: 0, a: 1}
     setupType: 0
-    prefab: {fileID: 7302322575137398513, guid: cee4f2e9353ab4eb4a951377ab0a03f9, type: 3}
-    linkedToPlayerGameObject: 0
-    cameraFollowPrefab: 0
+    prefabs:
+    - {fileID: 7302322575137398513, guid: cee4f2e9353ab4eb4a951377ab0a03f9, type: 3}
   - color: {r: 1, g: 1, b: 0, a: 1}
     setupType: 0
-    prefab: {fileID: 1145638879396593536, guid: f76e2977ce5e34b2389c3dc932f43213, type: 3}
-    linkedToPlayerGameObject: 0
-    cameraFollowPrefab: 0
+    prefabs:
+    - {fileID: 1145638879396593536, guid: f76e2977ce5e34b2389c3dc932f43213, type: 3}
 --- !u!4 &565164071
 Transform:
   m_ObjectHideFlags: 0
@@ -667,7 +664,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 50
+  field of view: 60
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -692,13 +689,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.6427876, y: 0, z: 0, w: 0.7660445}
+  m_LocalRotation: {x: 0.60876137, y: 0, z: 0, w: 0.7933534}
   m_LocalPosition: {x: 0, y: 15, z: 0}
   m_LocalScale: {x: 1, y: 1.0000001, z: 1.0000001}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 80, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 75, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0

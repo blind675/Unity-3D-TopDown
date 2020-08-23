@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class InventoryController : MonoBehaviour {
 
-	public int bricksCount = 0;
-
-	public bool CanPickUpMoreBricks => bricksCount < bricks.Length;
-	public bool CanUseBrick => bricksCount > 0;
+	public int bricksCount { get; private set; } = 0;
 
 	public GameObject [] bricks;
 
-
-	private void Start ()
+	public void SetInitialBricksInInventory (int intialBrickCount)
 	{
+		bricksCount = intialBrickCount;
+
 		// activate the bricksCount bricks and hide the rest
 		for (int i = 0; i < bricks.Length; i++) {
 			if (i < bricksCount) {
@@ -24,14 +22,15 @@ public class InventoryController : MonoBehaviour {
 		}
 	}
 
-
 	public void AddBrick (GameObject brickToAdd)
 	{
-		if (CanPickUpMoreBricks) {
+		if (HasRoomForMoreBricks ()) {
 			ActivateTheNextBrickInIventory ();
 			DestroyTheBrickFromTheGround (brickToAdd);
 		}
 	}
+
+	public bool HasRoomForMoreBricks () => bricksCount < bricks.Length;
 
 	private void ActivateTheNextBrickInIventory ()
 	{
@@ -46,10 +45,12 @@ public class InventoryController : MonoBehaviour {
 
 	public void UseBrick ()
 	{
-		if (CanUseBrick) {
+		if (HasBrickAvailable ()) {
 			HideTheNextBrickInIventory ();
 		}
 	}
+
+	public bool HasBrickAvailable () => bricksCount > 0;
 
 	private void HideTheNextBrickInIventory ()
 	{

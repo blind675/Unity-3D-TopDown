@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a863646cf8a4efe950d6bda9ba4be5, type: 3}
   m_Name: Player Data
   m_EditorClassIdentifier: 
-  bricksInInventory: 5
+  bricksInInventory: 1
+  playerInaccuracy: 0.25
+  playerForce: 8

@@ -9,10 +9,5 @@ public class ColorToPrefab {
 
 	public Color color;
 	public PrefabSetupType setupType = PrefabSetupType.Spawn;
-	public GameObject prefab;
-
-	public bool linkedToPlayerGameObject;
-
-	// TODO: remove this
-	//public bool cameraFollowPrefab;
+	public GameObject [] prefabs;
 }

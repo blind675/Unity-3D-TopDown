@@ -4,24 +4,26 @@ using UnityEngine;
 
 public class EnemyHitController : MonoBehaviour {
 
-	const float IMPACT_FORCE_TRESHOLD = 300f;
+	const float IMPACT_FORCE_TRESHOLD = 200f;
 	const float IMPACT_FORCE_MAX = 700f;
-
-	[SerializeField]
-	private float maxLife = 100;
-	[SerializeField]
-	private float enemyArmour = 1;
 
 	public HealthBarScript healthBar;
 
+	private float enemyArmour;
 	private float life;
+
 	private EnemyFXController enemyFXController;
+	private EnemyStats enemyStats;
 
 	private void Start ()
 	{
+		enemyStats = GetComponent<EnemyStats> ();
 		enemyFXController = GetComponent<EnemyFXController> ();
-		healthBar.SetMaxhealth (maxLife);
-		life = maxLife;
+
+		life = enemyStats.maxLife;
+		healthBar.SetMaxhealth (enemyStats.maxLife);
+
+		enemyArmour = enemyStats.armour;
 	}
 
 	private void OnCollisionEnter (Collision collision)
@@ -55,6 +57,7 @@ public class EnemyHitController : MonoBehaviour {
 
 	}
 
+	// TODO: change to get more punch or make weaker enemyes ...
 	private float GetLifeDecreaseForCollision (Collision collision)
 	{
 		float impactForce = GetImpactForceForCollision (collision);

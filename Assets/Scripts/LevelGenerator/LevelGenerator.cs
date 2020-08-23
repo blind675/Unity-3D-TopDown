@@ -37,26 +37,18 @@ public class LevelGenerator : MonoBehaviour {
 
 				Vector3 position = GetTilePositionFromCoordonates (x, y);
 
-				GameObject prefab = colorMapping.prefab;
+				int prefabIndex = 0;
+
+				if (colorMapping.prefabs.Length > 0) prefabIndex = Random.Range (0, colorMapping.prefabs.Length);
+
+				GameObject prefab = colorMapping.prefabs [prefabIndex];
 
 				if (colorMapping.setupType == ColorToPrefab.PrefabSetupType.Spawn) {
-					prefab = SpawnPrefabAtPosition (colorMapping.prefab, position);
+					SpawnPrefabAtPosition (prefab, position);
 				} else {
-					MovePrefabToPosition (colorMapping.prefab, position);
+					MovePrefabToPosition (prefab, position);
 				}
 
-				if (colorMapping.linkedToPlayerGameObject) {
-					EnemyController enemyController = prefab.GetComponent<EnemyController> ();
-
-					if (enemyController != null) {
-						enemyController.player = GameObject.Find ("Player");
-					}
-				}
-
-				// TODO: remove this
-				//if (colorMapping.cameraFollowPrefab) {
-				//	Camera.main.GetComponent<CameraController> ().player = prefab.transform;
-				//}
 			}
 		}
 	}
