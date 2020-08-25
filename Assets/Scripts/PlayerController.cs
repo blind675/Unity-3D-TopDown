@@ -5,10 +5,10 @@ using UnityEngine;
 [RequireComponent (typeof (CharacterController))]
 public class PlayerController : MonoBehaviour {
 
-	public float roationSpeed = 450f;
-	public float movementSpeed = 5f;
+	public float roationSpeed = 180f;
+	public float movementSpeed = 4f;
 
-	//public Joystick joystick;
+	public Joystick joystick;
 	public PlayerData playerData;
 
 	private Vector3 movement;
@@ -24,6 +24,9 @@ public class PlayerController : MonoBehaviour {
 		playerAttack = GetComponent<AttackMechanics> ();
 		playerInventory = GetComponent<InventoryController> ();
 
+		if (LevelManager.IsFirstTutorialLevel ()) {
+			playerData.bricksInInventory = 0;
+		}
 		playerInventory.SetInitialBricksInInventory (playerData.bricksInInventory);
 
 		// TODO: get this from player data
@@ -36,55 +39,73 @@ public class PlayerController : MonoBehaviour {
 	void Update ()
 	{
 		// looking 
-		mousePosition = Input.mousePosition;
-		LookWithMouse ();
-
+		//mousePosition = Input.mousePosition;
+		//LookWithMouse ();
+		LookWithKeyboard ();
 
 		// moving
-		movement.x = Input.GetAxisRaw ("Horizontal");
+		movement.x = joystick.Horizontal;
 		movement.y = 0;
-		movement.z = Input.GetAxisRaw ("Vertical");
+		movement.z = joystick.Vertical;
+
+		// moving with keyboard
+		//movement.x = Input.GetAxisRaw ("Horizontal");
+		//movement.y = 0;
+		//movement.z = Input.GetAxisRaw ("Vertical");
 		Move ();
 
 		// attacking
-		if (Input.GetButtonDown ("Fire1") && playerInventory.HasBrickAvailable ()) {
+		//if (Input.GetButtonDown ("Fire1")) {
+		//	Shoot ();
+		//}
+
+	}
+
+	public void Shoot ()
+	{
+		if (playerInventory.HasBrickAvailable ()) {
 			playerAttack.Throw ();
 			playerInventory.UseBrick ();
 			playerData.bricksInInventory = playerInventory.bricksCount;
+
+			// TODO: play attack sound
+		} else {
+			// TODO: play no brick sound
 		}
-
 	}
 
-	void Move ()
+	private void Move ()
 	{
-		// Movement
-		Vector3 motion = movement;
-		motion -= Vector3.up * 9.1f; // Add gravity
-		motion *= (Mathf.Abs (movement.x) == 1 && Mathf.Abs (movement.y) == 1) ? .7f : 1f;
+		if (Mathf.Abs (movement.x) + Mathf.Abs (movement.z) > 0.7) {
 
-		characterController.Move (motion * movementSpeed * Time.deltaTime);
+			// Movement
+			Vector3 motion = movement;
+			motion -= Vector3.up * 9.1f; // Add gravity
+			motion *= (Mathf.Abs (movement.x) == 1 && Mathf.Abs (movement.z) == 1) ? .7f : 1f;
+
+			characterController.Move (motion * movementSpeed * Time.deltaTime);
+		}
 	}
 
-	void LookWithKeyboard ()
+	private void LookWithKeyboard ()
 	{
 		// Looking
 		if (movement != Vector3.zero) {
 			Quaternion targetRotation = Quaternion.LookRotation (movement);
 			transform.eulerAngles = Vector3.up * Mathf.MoveTowardsAngle (transform.eulerAngles.y, targetRotation.eulerAngles.y, roationSpeed * Time.deltaTime);
 		}
-
 	}
 
-	void LookWithMouse ()
-	{
-		// Looking
-		Camera camera = Camera.main;
-		mousePosition = camera.ScreenToWorldPoint (new Vector3 (mousePosition.x, mousePosition.y, camera.transform.position.y - transform.position.y));
+	//private void LookWithMouse ()
+	//{
+	//	// Looking
+	//	Camera camera = Camera.main;
+	//	mousePosition = camera.ScreenToWorldPoint (new Vector3 (mousePosition.x, mousePosition.y, camera.transform.position.y - transform.position.y));
 
-		Quaternion targetRotation = Quaternion.LookRotation (mousePosition - new Vector3 (transform.position.x, 0, transform.position.z));
-		// add the correction +90 , why is that ?
-		transform.eulerAngles = Vector3.up * Mathf.MoveTowardsAngle (transform.eulerAngles.y, targetRotation.eulerAngles.y + 90, roationSpeed * Time.deltaTime);
-	}
+	//	Quaternion targetRotation = Quaternion.LookRotation (mousePosition - new Vector3 (transform.position.x, 0, transform.position.z));
+	//	// add the correction +90 , why is that ?
+	//	transform.eulerAngles = Vector3.up * Mathf.MoveTowardsAngle (transform.eulerAngles.y, targetRotation.eulerAngles.y + 90, roationSpeed * Time.deltaTime);
+	//}
 
 	private void OnTriggerEnter (Collider other)
 	{

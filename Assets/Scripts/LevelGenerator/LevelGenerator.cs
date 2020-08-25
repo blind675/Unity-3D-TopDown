@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour {
-	public Texture2D map;
+
 	public ColorToPrefab [] colorMappings;
 
 	void Start ()
@@ -14,8 +14,8 @@ public class LevelGenerator : MonoBehaviour {
 	// TODO: make versatile 3D and 2D
 	void GenerateLevel ()
 	{
-		for (int x = 0; x < map.width; x++) {
-			for (int y = 0; y < map.height; y++) {
+		for (int x = 0; x < LevelManager.GetLevelImageMap ().width; x++) {
+			for (int y = 0; y < LevelManager.GetLevelImageMap ().height; y++) {
 				GenerateTile (x, y);
 			}
 		}
@@ -23,7 +23,7 @@ public class LevelGenerator : MonoBehaviour {
 
 	void GenerateTile (int x, int y)
 	{
-		Color pixelColor = map.GetPixel (x, y);
+		Color pixelColor = LevelManager.GetLevelImageMap ().GetPixel (x, y);
 
 		if (pixelColor.a == 0) {
 			return;
@@ -54,7 +54,7 @@ public class LevelGenerator : MonoBehaviour {
 	}
 
 	// photo origin is top left, map origin is center -- corect for that
-	private Vector3 GetTilePositionFromCoordonates (int x, int y) => new Vector3 (x - map.width / 2, 0, y - map.height / 2);
+	private Vector3 GetTilePositionFromCoordonates (int x, int y) => new Vector3 (x - LevelManager.GetLevelImageMap ().width / 2, 0, y - LevelManager.GetLevelImageMap ().height / 2);
 
 	private GameObject SpawnPrefabAtPosition (GameObject prefab, Vector3 position) => Instantiate (prefab, position, Quaternion.identity, transform);
 

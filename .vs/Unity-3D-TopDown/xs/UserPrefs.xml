@@ -1,10 +1,13 @@
 ﻿<Properties StartupConfiguration="{00B8A00C-CF68-39EA-839B-B0CDAF166D1E}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/EnemyHitController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/SceneController.cs">
     <Files>
-      <File FileName="Assets/Scripts/LevelGenerator/LevelGenerator.cs" Line="49" Column="34" />
-      <File FileName="Assets/Scripts/EnemyHitController.cs" Line="60" Column="62" />
-      <File FileName="Assets/Scripts/EnemyController.cs" Line="19" Column="3" />
-      <File FileName="Assets/Scripts/EnemyStats.cs" Line="7" Column="22" />
+      <File FileName="Assets/Scripts/LevelGenerator/LevelGenerator.cs" Line="57" Column="147" />
+      <File FileName="Assets/Scripts/InputManager.cs" />
+      <File FileName="Assets/Scripts/ExitLevel.cs" />
+      <File FileName="Assets/Scripts/PlayerController.cs" Line="8" Column="32" />
+      <File FileName="Assets/Scripts/InventoryController.cs" />
+      <File FileName="Assets/Scripts/LevelManager.cs" Line="36" Column="60" />
+      <File FileName="Assets/Scripts/SceneController.cs" Line="40" Column="25" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -12,7 +15,8 @@
           <Node name="Unity-3D-TopDown" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
-                <Node name="EnemyHitController.cs" selected="True" />
+                <Node name="LevelGenerator" expanded="True" />
+                <Node name="SceneController.cs" selected="True" />
               </Node>
             </Node>
           </Node>
@@ -22,7 +26,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="b0b0e646-c39a-4562-b20b-1ff9930eebaf" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="9cbcfc11-fb91-4cac-927e-3b6c35937a7d" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

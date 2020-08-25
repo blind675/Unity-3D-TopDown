@@ -16,6 +16,8 @@ public class EnemyController : MonoBehaviour {
 
 	private void Start ()
 	{
+		player = GameObject.FindGameObjectsWithTag ("Player") [0];
+
 		enemyStats = GetComponent<EnemyStats> ();
 		enemyInventory = GetComponent<InventoryController> ();
 		attack = GetComponent<AttackMechanics> ();
@@ -25,9 +27,6 @@ public class EnemyController : MonoBehaviour {
 		attack.SetThrowInacuracy (enemyStats.inaccuracy);
 		attack.SetThrowForce (enemyStats.attackForce);
 		attack.UpdateAttackConeUI ();
-
-		player = GameObject.FindGameObjectsWithTag ("Player") [0];
-
 	}
 
 	// Update is called once per frame
