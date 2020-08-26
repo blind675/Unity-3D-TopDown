@@ -64,6 +64,7 @@
     <Compile Include="Assets/Scripts/InventoryController.cs" />
     <Compile Include="Assets/Scripts/FX/CubeExplosionFX.cs" />
     <Compile Include="Assets/Scripts/LevelGenerator/ColorToPrefab.cs" />
+    <Compile Include="Assets/Scripts/ExitLevel.cs" />
     <Compile Include="Assets/Joystick Pack/Scripts/Joysticks/FloatingJoystick.cs" />
     <Compile Include="Assets/Scripts/PlayerController.cs" />
     <Compile Include="Assets/Scripts/EnemyFXController.cs" />
@@ -74,13 +75,14 @@
     <Compile Include="Assets/Joystick Pack/Scripts/Joysticks/FixedJoystick.cs" />
     <Compile Include="Assets/Scripts/UIController.cs" />
     <Compile Include="Assets/Joystick Pack/Examples/JoystickPlayerExample.cs" />
+    <Compile Include="Assets/Scripts/LevelManager.cs" />
     <Compile Include="Assets/Joystick Pack/Scripts/Joysticks/VariableJoystick.cs" />
     <Compile Include="Assets/Scripts/EnemyController.cs" />
     <Compile Include="Assets/Scripts/CameraController.cs" />
     <Compile Include="Assets/Scripts/HealthBarUIItem/HealthBarBillBoardScript.cs" />
-    <Compile Include="Assets/Scripts/LevelManager.cs" />
-    <Compile Include="Assets/Scripts/ExitLevel.cs" />
     <Compile Include="Assets/Scripts/SceneController.cs" />
+    <Compile Include="Assets/Scripts/Rotate.cs" />
+    <Compile Include="Assets/Scripts/MenuController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -8,10 +8,12 @@ public class PlayerController : MonoBehaviour {
 	public float roationSpeed = 180f;
 	public float movementSpeed = 4f;
 
-	public Joystick joystick;
+	public Joystick moveJoystick;
+	public Joystick lookJoystick;
 	public PlayerData playerData;
 
 	private Vector3 movement;
+	private Vector3 looking;
 	private Vector3 mousePosition;
 
 	private CharacterController characterController;
@@ -38,26 +40,36 @@ public class PlayerController : MonoBehaviour {
 
 	void Update ()
 	{
-		// looking 
-		//mousePosition = Input.mousePosition;
-		//LookWithMouse ();
-		LookWithKeyboard ();
-
-		// moving
-		movement.x = joystick.Horizontal;
-		movement.y = 0;
-		movement.z = joystick.Vertical;
-
-		// moving with keyboard
-		//movement.x = Input.GetAxisRaw ("Horizontal");
+		// MOBILE
+		// moving and looking with joystick
+		//movement.x = moveJoystick.Horizontal;
 		//movement.y = 0;
-		//movement.z = Input.GetAxisRaw ("Vertical");
+		//movement.z = moveJoystick.Vertical;
+
+		//looking.x = lookJoystick.Horizontal;
+		//looking.y = 0;
+		//looking.z = lookJoystick.Vertical;
+
+		//LookWithJoystick ();
+		//Move ();
+
+
+		//DESCKTOP
+		//looking with keybaord
+		mousePosition = Input.mousePosition;
+		LookWithMouse ();
+		//LookWithKeyboard ();
+
+		//moving with keyboard
+		movement.x = Input.GetAxisRaw ("Horizontal");
+		movement.y = 0;
+		movement.z = Input.GetAxisRaw ("Vertical");
 		Move ();
 
-		// attacking
-		//if (Input.GetButtonDown ("Fire1")) {
-		//	Shoot ();
-		//}
+		//attacking
+		if (Input.GetButtonDown ("Fire1")) {
+			Shoot ();
+		}
 
 	}
 
@@ -76,36 +88,42 @@ public class PlayerController : MonoBehaviour {
 
 	private void Move ()
 	{
-		if (Mathf.Abs (movement.x) + Mathf.Abs (movement.z) > 0.7) {
+		// Movement
+		Vector3 motion = movement;
+		motion -= Vector3.up * 9.1f; // Add gravity
+		motion *= (Mathf.Abs (movement.x) == 1 && Mathf.Abs (movement.z) == 1) ? .7f : 1f;
 
-			// Movement
-			Vector3 motion = movement;
-			motion -= Vector3.up * 9.1f; // Add gravity
-			motion *= (Mathf.Abs (movement.x) == 1 && Mathf.Abs (movement.z) == 1) ? .7f : 1f;
+		characterController.Move (motion * movementSpeed * Time.deltaTime);
 
-			characterController.Move (motion * movementSpeed * Time.deltaTime);
-		}
 	}
 
-	private void LookWithKeyboard ()
-	{
-		// Looking
-		if (movement != Vector3.zero) {
-			Quaternion targetRotation = Quaternion.LookRotation (movement);
-			transform.eulerAngles = Vector3.up * Mathf.MoveTowardsAngle (transform.eulerAngles.y, targetRotation.eulerAngles.y, roationSpeed * Time.deltaTime);
-		}
-	}
-
-	//private void LookWithMouse ()
+	//private void LookWithJoystick ()
 	//{
 	//	// Looking
-	//	Camera camera = Camera.main;
-	//	mousePosition = camera.ScreenToWorldPoint (new Vector3 (mousePosition.x, mousePosition.y, camera.transform.position.y - transform.position.y));
-
-	//	Quaternion targetRotation = Quaternion.LookRotation (mousePosition - new Vector3 (transform.position.x, 0, transform.position.z));
-	//	// add the correction +90 , why is that ?
-	//	transform.eulerAngles = Vector3.up * Mathf.MoveTowardsAngle (transform.eulerAngles.y, targetRotation.eulerAngles.y + 90, roationSpeed * Time.deltaTime);
+	//	if (looking != Vector3.zero) {
+	//		Quaternion targetRotation = Quaternion.LookRotation (looking);
+	//		transform.eulerAngles = Vector3.up * Mathf.MoveTowardsAngle (transform.eulerAngles.y, targetRotation.eulerAngles.y, roationSpeed * Time.deltaTime);
+	//	}
 	//}
+
+	//private void LookWithKeyboard ()
+	//{
+	//	// Looking
+	//	if (movement != Vector3.zero) {
+	//		Quaternion targetRotation = Quaternion.LookRotation (movement);
+	//		transform.eulerAngles = Vector3.up * Mathf.MoveTowardsAngle (transform.eulerAngles.y, targetRotation.eulerAngles.y, roationSpeed * Time.deltaTime);
+	//	}
+	//}
+
+	private void LookWithMouse ()
+	{
+		// Looking
+		Camera camera = Camera.main;
+		mousePosition = camera.ScreenToWorldPoint (new Vector3 (mousePosition.x, mousePosition.y, camera.transform.position.y - transform.position.y));
+
+		Quaternion targetRotation = Quaternion.LookRotation (mousePosition - new Vector3 (transform.position.x, 0, transform.position.z));
+		transform.eulerAngles = Vector3.up * Mathf.MoveTowardsAngle (transform.eulerAngles.y, targetRotation.eulerAngles.y, roationSpeed * Time.deltaTime);
+	}
 
 	private void OnTriggerEnter (Collider other)
 	{

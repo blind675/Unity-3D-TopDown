@@ -501,7 +501,7 @@ MonoBehaviour:
   maxLife: 80
   armour: 3
   inaccuracy: 0.15
-  attackForce: 6
+  attackForce: 8
   attacksPerSecond: 1
   bricksStartCount: 5
   trackRange: 8

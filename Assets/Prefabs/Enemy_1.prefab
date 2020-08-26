@@ -430,8 +430,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cce7bf91a51904e16aac8f5414bb8775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLife: 100
-  enemyArmour: 1
   healthBar: {fileID: 182396129378024942}
 --- !u!114 &6928019119624904628
 MonoBehaviour:
@@ -500,7 +498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0bd679266ac442ca896c79cc9a1c340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLife: 100
+  maxLife: 60
   armour: 1
   inaccuracy: 0.2
   attackForce: 8

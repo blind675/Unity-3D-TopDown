@@ -10,6 +10,8 @@ public class LevelManager {
 	static private int tutorialLevelIndex = 0;
 	static private int levelIndex = 0;
 
+	static public int highestLevelIndex = 0;
+
 	static public void LoadTutorialLevels ()
 	{
 		tutorialLevels = Resources.LoadAll<Texture2D> ("Levels/Tutorial");
@@ -18,7 +20,7 @@ public class LevelManager {
 
 	static public void LoadLevels ()
 	{
-		levels = Resources.LoadAll<Texture2D> ("Levels");
+		levels = Resources.LoadAll<Texture2D> ("Levels/Game");
 		levelIndex = 0;
 	}
 
@@ -33,7 +35,7 @@ public class LevelManager {
 				LoadLevels ();
 			}
 
-			levelIndex = Mathf.Clamp (levelIndex, 0, levels.Length);
+			levelIndex = Mathf.Clamp (levelIndex, 0, levels.Length - 1);
 			return levels [levelIndex];
 		}
 
@@ -46,10 +48,33 @@ public class LevelManager {
 			tutorialLevelIndex++;
 		} else {
 			levelIndex++;
+			levelIndex = Mathf.Clamp (levelIndex, 0, levels.Length);
+			highestLevelIndex = levelIndex;
 		}
 	}
 
 	static public bool ShouldLoadTutorialLevel () => tutorialLevelIndex < tutorialLevels.Length;
 
 	static public bool IsFirstTutorialLevel () => tutorialLevelIndex == 0;
+
+	static public int LevelsCount ()
+	{
+		if (levels == null) {
+			LoadLevels ();
+		}
+
+		return levels.Length;
+	}
+
+	static public bool CanLoadLevel (int level) => level <= highestLevelIndex;
+
+	static public void LoadLevel (int level)
+	{
+		if (CanLoadLevel (level)) {
+			levelIndex = level;
+		} else {
+			levelIndex = highestLevelIndex;
+		}
+	}
+
 }

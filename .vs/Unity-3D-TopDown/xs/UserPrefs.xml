@@ -1,13 +1,11 @@
 ﻿<Properties StartupConfiguration="{00B8A00C-CF68-39EA-839B-B0CDAF166D1E}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/SceneController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ExitLevel.cs">
     <Files>
-      <File FileName="Assets/Scripts/LevelGenerator/LevelGenerator.cs" Line="57" Column="147" />
-      <File FileName="Assets/Scripts/InputManager.cs" />
-      <File FileName="Assets/Scripts/ExitLevel.cs" />
-      <File FileName="Assets/Scripts/PlayerController.cs" Line="8" Column="32" />
-      <File FileName="Assets/Scripts/InventoryController.cs" />
-      <File FileName="Assets/Scripts/LevelManager.cs" Line="36" Column="60" />
-      <File FileName="Assets/Scripts/SceneController.cs" Line="40" Column="25" />
+      <File FileName="Assets/Scripts/LevelGenerator/LevelGenerator.cs" Line="17" Column="45" />
+      <File FileName="Assets/Scripts/LevelManager.cs" Line="38" Column="62" />
+      <File FileName="Assets/Scripts/SceneController.cs" Line="40" Column="22" />
+      <File FileName="Assets/Scripts/MenuController.cs" />
+      <File FileName="Assets/Scripts/ExitLevel.cs" Line="8" Column="45" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -16,7 +14,7 @@
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
                 <Node name="LevelGenerator" expanded="True" />
-                <Node name="SceneController.cs" selected="True" />
+                <Node name="ExitLevel.cs" selected="True" />
               </Node>
             </Node>
           </Node>
@@ -26,7 +24,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="9cbcfc11-fb91-4cac-927e-3b6c35937a7d" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="ab55f9e3-69f6-4e0f-a931-2006a61dadfd" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

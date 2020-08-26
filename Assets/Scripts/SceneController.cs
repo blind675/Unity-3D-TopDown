@@ -16,7 +16,6 @@ public class SceneController {
 		LevelManager.GoToNextLeve ();
 
 		levelEnded = true;
-		Debug.Log ("- Go To Lobby Scene");
 
 		// Load Lobby Scene
 		SceneManager.LoadScene ("LobbyScene");
@@ -28,17 +27,18 @@ public class SceneController {
 			// Load Next Tutorial Level
 
 			levelEnded = false;
-			Debug.Log ("- Go To Game Level Scene");
-
 			SceneManager.LoadScene ("GameLevelScene");
 		} else {
-
-			Debug.Log ("- Go To Menu Scene");
-
 			// Load Menu Scene
-			//SceneManager.LoadScene ("MenuScene");
-			// FIXME: remove this
-			SceneManager.LoadScene ("GameLevelScene");
+			SceneManager.LoadScene ("MenuScene");
+
 		}
+	}
+
+	public static void LoadLevelSceneForLevel (int level)
+	{
+		levelEnded = false;
+		LevelManager.LoadLevel (level);
+		SceneManager.LoadScene ("GameLevelScene");
 	}
 }
