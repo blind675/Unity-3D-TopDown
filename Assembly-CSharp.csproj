@@ -56,9 +56,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/Joystick Pack/Scripts/Base/Joystick.cs" />
-    <Compile Include="Assets/Scripts/EnemyHitController.cs" />
+    <Compile Include="Assets/Scripts/HitControllers/EnemyHitController.cs" />
     <Compile Include="Assets/Scripts/EnemyStats.cs" />
     <Compile Include="Assets/Joystick Pack/Examples/JoystickSetterExample.cs" />
+    <Compile Include="Assets/Scripts/Rotate.cs" />
     <Compile Include="Assets/Scripts/AttackMechanics.cs" />
     <Compile Include="Assets/Scripts/ScriptableObjects/PlayerData.cs" />
     <Compile Include="Assets/Scripts/InventoryController.cs" />
@@ -66,23 +67,28 @@
     <Compile Include="Assets/Scripts/LevelGenerator/ColorToPrefab.cs" />
     <Compile Include="Assets/Scripts/ExitLevel.cs" />
     <Compile Include="Assets/Joystick Pack/Scripts/Joysticks/FloatingJoystick.cs" />
+    <Compile Include="Assets/Scripts/LobbyController.cs" />
     <Compile Include="Assets/Scripts/PlayerController.cs" />
     <Compile Include="Assets/Scripts/EnemyFXController.cs" />
+    <Compile Include="Assets/Scripts/MenuController.cs" />
     <Compile Include="Assets/Scripts/InputManager.cs" />
     <Compile Include="Assets/Scripts/LevelGenerator/LevelGenerator.cs" />
+    <Compile Include="Assets/Scripts/BuyController.cs" />
     <Compile Include="Assets/Joystick Pack/Scripts/Joysticks/DynamicJoystick.cs" />
     <Compile Include="Assets/Scripts/HealthBarUIItem/HealthBarScript.cs" />
     <Compile Include="Assets/Joystick Pack/Scripts/Joysticks/FixedJoystick.cs" />
     <Compile Include="Assets/Scripts/UIController.cs" />
     <Compile Include="Assets/Joystick Pack/Examples/JoystickPlayerExample.cs" />
+    <Compile Include="Assets/Scripts/HitControllers/PlayerHitController.cs" />
     <Compile Include="Assets/Scripts/LevelManager.cs" />
+    <Compile Include="Assets/Scripts/HitControllers/AbstractHitController.cs" />
     <Compile Include="Assets/Joystick Pack/Scripts/Joysticks/VariableJoystick.cs" />
     <Compile Include="Assets/Scripts/EnemyController.cs" />
     <Compile Include="Assets/Scripts/CameraController.cs" />
-    <Compile Include="Assets/Scripts/HealthBarUIItem/HealthBarBillBoardScript.cs" />
+    <Compile Include="Assets/Scripts/HealthBarUIItem/BillBoardScript.cs" />
     <Compile Include="Assets/Scripts/SceneController.cs" />
-    <Compile Include="Assets/Scripts/Rotate.cs" />
-    <Compile Include="Assets/Scripts/MenuController.cs" />
+    <Compile Include="Assets/Scripts/GameOverController.cs" />
+    <Compile Include="Assets/Scripts/Brick.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -43,7 +43,7 @@ public class EnemyFXController : MonoBehaviour {
 		PlayRandomAudioClipFromArray (destroyAudioClips);
 	}
 
-	public void PlaySoundFXForCollision (Collision collision)
+	public void PlaySoundFXForHit ()
 	{
 		PlayRandomAudioClipFromArray (hitAudioClips);
 	}

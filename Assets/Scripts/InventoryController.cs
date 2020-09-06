@@ -6,6 +6,7 @@ public class InventoryController : MonoBehaviour {
 
 	public int bricksCount { get; private set; } = 0;
 
+	public PlayerData playerData;
 	public GameObject [] bricks;
 
 	public void SetInitialBricksInInventory (int intialBrickCount)
@@ -30,7 +31,7 @@ public class InventoryController : MonoBehaviour {
 		}
 	}
 
-	public bool HasRoomForMoreBricks () => bricksCount < bricks.Length;
+	public bool HasRoomForMoreBricks () => bricksCount < bricks.Length && bricksCount < playerData.inventorySize;
 
 	private void ActivateTheNextBrickInIventory ()
 	{

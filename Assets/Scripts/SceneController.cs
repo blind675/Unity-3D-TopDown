@@ -41,4 +41,14 @@ public class SceneController {
 		LevelManager.LoadLevel (level);
 		SceneManager.LoadScene ("GameLevelScene");
 	}
+
+	public static void GoToGameOverScene ()
+	{
+		SceneManager.LoadScene ("GameOverScene");
+	}
+
+	public static void GoToMenuScene ()
+	{
+		SceneManager.LoadScene ("MenuScene");
+	}
 }

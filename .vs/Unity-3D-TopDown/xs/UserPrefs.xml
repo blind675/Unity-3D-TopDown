@@ -1,11 +1,11 @@
 ﻿<Properties StartupConfiguration="{00B8A00C-CF68-39EA-839B-B0CDAF166D1E}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ExitLevel.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/HitControllers/PlayerHitController.cs">
     <Files>
-      <File FileName="Assets/Scripts/LevelGenerator/LevelGenerator.cs" Line="17" Column="45" />
-      <File FileName="Assets/Scripts/LevelManager.cs" Line="38" Column="62" />
-      <File FileName="Assets/Scripts/SceneController.cs" Line="40" Column="22" />
-      <File FileName="Assets/Scripts/MenuController.cs" />
-      <File FileName="Assets/Scripts/ExitLevel.cs" Line="8" Column="45" />
+      <File FileName="Assets/Scripts/ScriptableObjects/PlayerData.cs" Line="19" Column="24" />
+      <File FileName="Assets/Scripts/PlayerController.cs" Line="27" Column="42" />
+      <File FileName="Assets/Scripts/HitControllers/PlayerHitController.cs" Line="19" Column="26" />
+      <File FileName="Assets/Scripts/HealthBarUIItem/HealthBarScript.cs" Line="10" Column="26" />
+      <File FileName="Assets/Scripts/Brick.cs" Line="19" Column="32" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -13,8 +13,13 @@
           <Node name="Unity-3D-TopDown" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="Scripts" expanded="True">
+                <Node name="FX" expanded="True" />
+                <Node name="HealthBarUIItem" expanded="True" />
+                <Node name="HitControllers" expanded="True">
+                  <Node name="PlayerHitController.cs" selected="True" />
+                </Node>
                 <Node name="LevelGenerator" expanded="True" />
-                <Node name="ExitLevel.cs" selected="True" />
+                <Node name="ScriptableObjects" expanded="True" />
               </Node>
             </Node>
           </Node>
@@ -24,7 +29,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="ab55f9e3-69f6-4e0f-a931-2006a61dadfd" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="b05570e8-66f0-4f6d-8be7-8d3896cf7182" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

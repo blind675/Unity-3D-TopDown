@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent (typeof (CharacterController))]
+//[RequireComponent (typeof (CharacterController))]
+[RequireComponent (typeof (Rigidbody))]
 public class PlayerController : MonoBehaviour {
 
 	public float roationSpeed = 180f;
@@ -16,26 +17,21 @@ public class PlayerController : MonoBehaviour {
 	private Vector3 looking;
 	private Vector3 mousePosition;
 
+	private new Rigidbody rigidbody;
 	private CharacterController characterController;
 	private AttackMechanics playerAttack;
 	private InventoryController playerInventory;
 
-	private void Awake ()
+	private void Start ()
 	{
+		rigidbody = GetComponent<Rigidbody> ();
 		characterController = GetComponent<CharacterController> ();
 		playerAttack = GetComponent<AttackMechanics> ();
 		playerInventory = GetComponent<InventoryController> ();
+		playerInventory.SetInitialBricksInInventory (playerData.startBricksCount);
 
-		if (LevelManager.IsFirstTutorialLevel ()) {
-			playerData.bricksInInventory = 0;
-		}
-		playerInventory.SetInitialBricksInInventory (playerData.bricksInInventory);
 
-		// TODO: get this from player data
-		playerAttack.SetThrowForce (playerData.playerForce);
-		playerAttack.SetThrowInacuracy (playerData.playerInaccuracy);
-		playerAttack.UpdateAttackConeUI ();
-
+		UpdatePlayerAttackCone ();
 	}
 
 	void Update ()
@@ -86,14 +82,31 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
+	public void PickUpBrick ()
+	{
+		if (playerInventory.HasRoomForMoreBricks ()) {
+			playerInventory.AddBrick (InputManager.brickInContact);
+			playerData.bricksInInventory = playerInventory.bricksCount;
+		}
+	}
+
+	private void UpdatePlayerAttackCone ()
+	{
+		playerAttack.SetThrowForce (playerData.playerForce);
+		playerAttack.SetThrowInacuracy (playerData.playerInaccuracy);
+		playerAttack.UpdateAttackConeUI ();
+	}
+
 	private void Move ()
 	{
 		// Movement
 		Vector3 motion = movement;
-		motion -= Vector3.up * 9.1f; // Add gravity
+		//motion -= Vector3.up * 9.1f; // Add gravity
 		motion *= (Mathf.Abs (movement.x) == 1 && Mathf.Abs (movement.z) == 1) ? .7f : 1f;
 
-		characterController.Move (motion * movementSpeed * Time.deltaTime);
+		rigidbody.position += motion * movementSpeed * Time.deltaTime;
+
+		//characterController.Move (motion * movementSpeed * Time.deltaTime);
 
 	}
 

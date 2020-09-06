@@ -49,13 +49,11 @@ public class LevelManager {
 		} else {
 			levelIndex++;
 			levelIndex = Mathf.Clamp (levelIndex, 0, levels.Length);
-			highestLevelIndex = levelIndex;
+			highestLevelIndex = Mathf.Max (levelIndex, highestLevelIndex);
 		}
 	}
 
 	static public bool ShouldLoadTutorialLevel () => tutorialLevelIndex < tutorialLevels.Length;
-
-	static public bool IsFirstTutorialLevel () => tutorialLevelIndex == 0;
 
 	static public int LevelsCount ()
 	{

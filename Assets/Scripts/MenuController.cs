@@ -7,6 +7,8 @@ using static UnityEngine.UI.Dropdown;
 public class MenuController : MonoBehaviour {
 	public Dropdown dropdown;
 
+	public PlayerData playerData;
+
 	private int higestLevelReached;
 	private int selectedLevel;
 
@@ -24,7 +26,6 @@ public class MenuController : MonoBehaviour {
 		dropdown.options.Add (new OptionData ("Next"));
 
 		dropdown.value = higestLevelReached + 1;
-
 	}
 
 	public void DropDownValueChanged (int newValue)

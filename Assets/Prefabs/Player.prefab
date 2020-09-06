@@ -239,11 +239,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2882288834576269298}
-  - component: {fileID: 2882288834576269300}
+  - component: {fileID: 2525252252277278748}
+  - component: {fileID: 3550708635475835469}
   - component: {fileID: 2882288834576269299}
   - component: {fileID: 7342766823601947580}
   - component: {fileID: 4456091439570022766}
-  - component: {fileID: 3550708635475835469}
+  - component: {fileID: -4614181654030245837}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -271,8 +272,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!143 &2882288834576269300
-CharacterController:
+--- !u!54 &2525252252277278748
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2882288834576269297}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &3550708635475835469
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -282,12 +299,7 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 0.9
-  m_Radius: 0.3
-  m_SlopeLimit: 0
-  m_StepOffset: 0
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2882288834576269299
 MonoBehaviour:
@@ -333,25 +345,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d5c2495fcdc940398d2e62b1bb7b2a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: 12ffd1052cae8473b8b158e3afdb3eed, type: 2}
   bricks:
   - {fileID: 8371920270057313825}
   - {fileID: 6289224102709567826}
   - {fileID: 3519989244722914265}
   - {fileID: 5612444335650147108}
   - {fileID: 4609101024829068072}
---- !u!65 &3550708635475835469
-BoxCollider:
+--- !u!114 &-4614181654030245837
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2882288834576269297}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.81300646, y: 1, z: 0.7586874}
-  m_Center: {x: 0, y: 0, z: -0.0016679019}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6061c4eec52d240e0bf42199401e95c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
+  playerData: {fileID: 11400000, guid: 12ffd1052cae8473b8b158e3afdb3eed, type: 2}
 --- !u!1 &2882288835778774078
 GameObject:
   m_ObjectHideFlags: 0
