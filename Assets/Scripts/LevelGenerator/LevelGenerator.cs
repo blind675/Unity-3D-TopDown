@@ -1,14 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+
 
 public class LevelGenerator : MonoBehaviour {
 
 	public ColorToPrefab [] colorMappings;
+	public NavMeshSurface navMeshSurface;
 
 	void Awake ()
 	{
 		GenerateLevel ();
+
+		navMeshSurface.BuildNavMesh ();
+
+		//NavMeshSurface [] navMeshSurfaces = FindObjectsOfType<NavMeshSurface> ();
+
+		//for (int i = 0; i < navMeshSurfaces.Length; i++) {
+		//	navMeshSurfaces [i].BuildNavMesh ();
+		//}
 	}
 
 	// TODO: make versatile 3D and 2D

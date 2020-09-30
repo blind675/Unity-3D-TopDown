@@ -22,5 +22,7 @@ public class EnemyStats : MonoBehaviour {
 	public int chaseRange = 5;
 	[SerializeField]
 	public int attackRange = 3;
+	[SerializeField]
+	public float walkSpeed = 3;
 
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class InventoryController : MonoBehaviour {
 
 	public int bricksCount { get; private set; } = 0;
+	public int maxBricks = 5;
 
 	public PlayerData playerData;
 	public GameObject [] bricks;
@@ -31,7 +32,7 @@ public class InventoryController : MonoBehaviour {
 		}
 	}
 
-	public bool HasRoomForMoreBricks () => bricksCount < bricks.Length && bricksCount < playerData.inventorySize;
+	public bool HasRoomForMoreBricks () => bricksCount < bricks.Length && ((playerData == null && bricksCount < 5) || (bricksCount < playerData.inventorySize));
 
 	private void ActivateTheNextBrickInIventory ()
 	{

@@ -361,7 +361,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2882288834576269297}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2882288835778774079}
@@ -399,6 +399,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d5c2495fcdc940398d2e62b1bb7b2a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxBricks: 5
+  playerData: {fileID: 0}
   bricks:
   - {fileID: 8371920270057313825}
   - {fileID: 6289224102709567826}
@@ -505,8 +507,9 @@ MonoBehaviour:
   attacksPerSecond: 1
   bricksStartCount: 4
   trackRange: 7
-  chaseRange: 5
-  attackRange: 4
+  chaseRange: 3
+  attackRange: 2
+  walkSpeed: 1
 --- !u!1 &2882288835778774078
 GameObject:
   m_ObjectHideFlags: 0

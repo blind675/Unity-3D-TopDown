@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour {
 
 	public float roationSpeed = 180f;
 	public float movementSpeed = 4f;
+	public AudioClip throwAudio;
+	public AudioClip noBrickAudio;
 
 	public Joystick moveJoystick;
 	public Joystick lookJoystick;
@@ -76,9 +78,11 @@ public class PlayerController : MonoBehaviour {
 			playerInventory.UseBrick ();
 			playerData.bricksInInventory = playerInventory.bricksCount;
 
-			// TODO: play attack sound
+			// play attack sound
+			AudioSource.PlayClipAtPoint (throwAudio, gameObject.transform.position);
 		} else {
-			// TODO: play no brick sound
+			// play no brick sound
+			AudioSource.PlayClipAtPoint (noBrickAudio, gameObject.transform.position);
 		}
 	}
 
@@ -143,6 +147,7 @@ public class PlayerController : MonoBehaviour {
 		if (other.gameObject.tag == "Brick" && playerInventory.HasRoomForMoreBricks ()) {
 			playerInventory.AddBrick (other.gameObject);
 			playerData.bricksInInventory = playerInventory.bricksCount;
+			BricksOnGroundController.RemoveBrick (other.gameObject.transform);
 		}
 	}
 

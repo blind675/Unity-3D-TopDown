@@ -32,22 +32,30 @@ public class EnemyController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
+		float distanceToPlayer = GetDistanceToPlayer ();
+
+		if (distanceToPlayer < enemyStats.trackRange) {
+			LookAtPlayer ();
+		}
+
+		// TODO: diferent for zombies
 		if (enemyInventory.HasBrickAvailable ()) {
-			float distanceToPlayer = GetDistanceToPlayer ();
+
+			if (distanceToPlayer < enemyStats.chaseRange && distanceToPlayer > 1.5) {
+
+				ChasePlayer ();
+			}
 
 			if (distanceToPlayer < enemyStats.attackRange && CanAttackPlayer ()) {
 				AttackPlayer ();
 			}
+		}
 
-			if (distanceToPlayer < enemyStats.chaseRange) {
-				ChasePlayer ();
-			}
 
-			if (distanceToPlayer < enemyStats.trackRange) {
-				LookAtPlayer ();
-			}
-		} else {
+		if (BricksOnGroundController.AreBricksOnTheGround () && enemyInventory.HasRoomForMoreBricks ()) {
 			// Go Find Bricks
+
+			FindBrick ();
 		}
 	}
 
@@ -62,7 +70,8 @@ public class EnemyController : MonoBehaviour {
 
 	private void ChasePlayer ()
 	{
-		// do later
+		// TODO: use nav mesh
+		transform.position = Vector3.MoveTowards (transform.position, player.gameObject.transform.position, enemyStats.walkSpeed * Time.deltaTime);
 	}
 
 	private void AttackPlayer ()
@@ -70,5 +79,23 @@ public class EnemyController : MonoBehaviour {
 		attack.Throw ();
 		enemyInventory.UseBrick ();
 		lastAttackTime = Time.time;
+	}
+
+	private void FindBrick ()
+	{
+		Transform targetBrickLocation = BricksOnGroundController.GetClosestBrick (transform);
+
+		if (targetBrickLocation == null) return;
+
+		// TODO: use nav mesh
+		transform.position = Vector3.MoveTowards (transform.position, targetBrickLocation.position, enemyStats.walkSpeed * Time.deltaTime);
+	}
+
+	private void OnTriggerEnter (Collider other)
+	{
+		if (other.gameObject.tag == "Brick" && enemyInventory.HasRoomForMoreBricks ()) {
+			enemyInventory.AddBrick (other.gameObject);
+			BricksOnGroundController.RemoveBrick (other.gameObject.transform);
+		}
 	}
 }

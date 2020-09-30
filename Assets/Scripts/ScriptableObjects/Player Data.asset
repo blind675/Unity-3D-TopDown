@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a863646cf8a4efe950d6bda9ba4be5, type: 3}
   m_Name: Player Data
   m_EditorClassIdentifier: 
-  coins: 2024
-  bricksInInventory: 0
+  coins: 2028
+  bricksInInventory: 1
   startBricksCount: 0
   inventorySize: 1
   armour: 0
-  health: 35
+  health: 100
   playerInaccuracy: 0.25
   playerForce: 8

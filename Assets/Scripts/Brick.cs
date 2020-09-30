@@ -18,6 +18,10 @@ public class Brick : MonoBehaviour {
 		if (collision.gameObject.tag == "Ground") {
 			boxCollider.isTrigger = true;
 			rigidbody.isKinematic = true;
+
+
+
+			BricksOnGroundController.AddBrick (transform);
 		}
 	}
 }

@@ -10,9 +10,13 @@ public class PlayerHitController : AbstractHitController {
 	private float armour;
 	private float life;
 
+	private PlayerFXController playerFXController;
+
 	// Start is called before the first frame update
 	void Start ()
 	{
+		playerFXController = GetComponent<PlayerFXController> ();
+
 		life = playerData.health;
 
 		if (healthBar) {
@@ -45,10 +49,9 @@ public class PlayerHitController : AbstractHitController {
 			healthBar.SetHealth (life);
 		}
 
-		// TODO:
-		//playerFXController.ShowFXForCollision (collision);
+		playerFXController.ShowFXForCollision (collision);
 		//// and audio
-		//playerFXController.PlaySoundFXForHit ();
+		playerFXController.PlaySoundFXForHit ();
 	}
 
 	override public void BrickCollisionEnter (Collision collision)

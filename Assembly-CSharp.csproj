@@ -56,7 +56,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/Joystick Pack/Scripts/Base/Joystick.cs" />
+    <Compile Include="Assets/Scripts/PlayerFXController.cs" />
     <Compile Include="Assets/Scripts/HitControllers/EnemyHitController.cs" />
+    <Compile Include="Assets/Scripts/Brick.cs" />
     <Compile Include="Assets/Scripts/EnemyStats.cs" />
     <Compile Include="Assets/Joystick Pack/Examples/JoystickSetterExample.cs" />
     <Compile Include="Assets/Scripts/Rotate.cs" />
@@ -71,8 +73,10 @@
     <Compile Include="Assets/Scripts/PlayerController.cs" />
     <Compile Include="Assets/Scripts/EnemyFXController.cs" />
     <Compile Include="Assets/Scripts/MenuController.cs" />
+    <Compile Include="Assets/Scripts/GameOverController.cs" />
     <Compile Include="Assets/Scripts/InputManager.cs" />
     <Compile Include="Assets/Scripts/LevelGenerator/LevelGenerator.cs" />
+    <Compile Include="Assets/Scripts/BricksOnGroundController.cs" />
     <Compile Include="Assets/Scripts/BuyController.cs" />
     <Compile Include="Assets/Joystick Pack/Scripts/Joysticks/DynamicJoystick.cs" />
     <Compile Include="Assets/Scripts/HealthBarUIItem/HealthBarScript.cs" />
@@ -87,8 +91,7 @@
     <Compile Include="Assets/Scripts/CameraController.cs" />
     <Compile Include="Assets/Scripts/HealthBarUIItem/BillBoardScript.cs" />
     <Compile Include="Assets/Scripts/SceneController.cs" />
-    <Compile Include="Assets/Scripts/GameOverController.cs" />
-    <Compile Include="Assets/Scripts/Brick.cs" />
+    <Compile Include="Assets/Scripts/CameraShake.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -651,6 +654,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="NavMeshComponentsEditor.csproj">
+      <Project>{BEA037C4-A178-BA4F-D1B9-B174FB6F02CD}</Project>
+      <Name>NavMeshComponentsEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="NavMeshComponents.csproj">
+      <Project>{2599852E-83BA-CD00-FA29-6CB67A337D2C}</Project>
+      <Name>NavMeshComponents</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
